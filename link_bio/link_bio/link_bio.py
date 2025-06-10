@@ -8,7 +8,7 @@ from link_bio.components.footer import footer
 from link_bio.components.clock import card_clock 
 from link_bio.views.header.header import header
 import link_bio.styles.styles as styles
-
+from link_bio.views.quotes import quote
 
 
 
@@ -21,6 +21,7 @@ def index() -> rx.Component:
         rx.color_mode.button(position="top-center"),
         rx.vstack(
             navbar(),
+            quote(),
             header(),
             rx.text(
             "Soy ingeniero en automatización (1 año de experiencia), me especializo en la creación de scripts para la automatización en procesos tanto en sistemas linux y windows. Estoy en una activa búsqueda de trabajo. Cuento con 1 año de experiencia en procesos de trazabilidad de componentes.",
