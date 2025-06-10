@@ -46,8 +46,8 @@ class QuoteState(rx.State):
                     self.author = ""
                     
         except Exception as e:
-            self.quote = f"Error de conexión: {str(e)}"
-            self.author = ""
+            self.quote = f"Omnia Causa Fint"
+            self.author = "Desconocido"
         
         self.loading = False
 
