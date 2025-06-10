@@ -10,7 +10,7 @@ def header() -> rx.Component:
             border="5px solid #555",
             margin_right="2rem"  # Espacio horizontal a la derecha
         ),
-        rx.heading("🙃 Hola. Mi nombre es Arnoldo Del Toro!", size="9"),
+        rx.heading("🙃 Bienvenid@. Mi nombre es Arnoldo Del Toro!", size="9"),
         align="center",  # Centramos verticalmente los elementos
     ),
 

@@ -5,7 +5,11 @@ from link_bio.components.navbar import navbar
 from link_bio.components.links_personales import links_personales
 from rxconfig import config
 from link_bio.components.footer import footer
+from link_bio.components.clock import card_clock 
 from link_bio.views.header.header import header
+import link_bio.styles.styles as styles
+
+
 
 
 class State(rx.State):
@@ -19,18 +23,21 @@ def index() -> rx.Component:
             navbar(),
             header(),
             rx.text(
-                "Soy ingeniero en automatización (1 año de experiencia), me especializo en la creación de scripts para la automatización en procesos tanto en sistemas linux y windows.",
-                size="7",
+            "Soy ingeniero en automatización (1 año de experiencia), me especializo en la creación de scripts para la automatización en procesos tanto en sistemas linux y windows. Estoy en una activa búsqueda de trabajo. Cuento con 1 año de experiencia en procesos de trazabilidad de componentes.",
+            size="7",
             ),
+            card_clock(),
             links_personales(),
-            spacing="5",
+            footer(),
+            
+            spacing="4",
             justify="center",
-            min_height="85vh",
-            align_items="center"  # Corregido el typo (antes era "aling_items")
+            min_height="70vh",
+            align_items="center",
         ),
-        footer(),
     )
 
 
 app = rx.App()
 app.add_page(index)
+
