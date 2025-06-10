@@ -13,16 +13,38 @@ class QuoteState(rx.State):
         
         try:
             async with httpx.AsyncClient() as client:
-                response = await client.get("http://api.quotable.io/quotes/random",
-                params={"language": "es"} 
-                )
+                # 1. Obtener cita en inglés
+                response = await client.get("http://api.quotable.io/quotes/random")
+                
                 if response.status_code == 200:
                     data = response.json()[0]
-                    self.quote = data["content"]
-                    self.author = data["author"]
+                    original_quote = data["content"]
+                    author = data["author"]
+                    
+                    # 2. Traducir usando MyMemory (gratis, sin API key)
+                    encoded_quote = original_quote.replace(" ", "%20").replace("'", "%27")
+                    translation_url = f"https://api.mymemory.translated.net/get?q={encoded_quote}&langpair=en|es"
+                    
+                    translation_response = await client.get(translation_url)
+                    
+                    if translation_response.status_code == 200:
+                        translation_data = translation_response.json()
+                        if translation_data["responseStatus"] == 200:
+                            self.quote = translation_data["responseData"]["translatedText"]
+                            self.author = author
+                        else:
+                            # Si falla la traducción, usar el original
+                            self.quote = original_quote
+                            self.author = author
+                    else:
+                        # Si falla la traducción, usar el original en inglés
+                        self.quote = original_quote
+                        self.author = author
+                        
                 else:
                     self.quote = "Error al obtener la cita"
                     self.author = ""
+                    
         except Exception as e:
             self.quote = f"Error de conexión: {str(e)}"
             self.author = ""
