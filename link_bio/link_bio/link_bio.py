@@ -5,8 +5,8 @@ from link_bio.components.navbar import navbar
 from rxconfig import config
 from link_bio.components.footer import footer
 import link_bio.styles.styles as styles
-from link_bio.views.body import body
 from link_bio.views.base_page import base_page
+from link_bio.pages.body import body
 from link_bio.pages.privacy_legacy import privacy_legacy
 
 class State(rx.State):
