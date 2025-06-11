@@ -2,43 +2,28 @@
 
 import reflex as rx
 from link_bio.components.navbar import navbar
-from link_bio.components.links_personales import links_personales
 from rxconfig import config
 from link_bio.components.footer import footer
-from link_bio.components.clock import card_clock 
-from link_bio.views.header.header import header
 import link_bio.styles.styles as styles
-from link_bio.views.quotes import quote
-
-
+from link_bio.views.body import body
+from link_bio.views.base_page import base_page
+from link_bio.pages.privacy_legacy import privacy_legacy
 
 class State(rx.State):
     """The app state."""
 
 def index() -> rx.Component:
     # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-center"),
-        rx.vstack(
-            navbar(),
-            quote(),
-            header(),
-            rx.text(
-            "Soy ingeniero en automatización (1 año de experiencia), me especializo en la creación de scripts para la automatización en procesos tanto en sistemas linux y windows. Estoy en una activa búsqueda de trabajo. Cuento con 1 año de experiencia en procesos de trazabilidad de componentes.",
-            size="7",
-            ),
-            card_clock(),
-            links_personales(),
-            footer(),
-            
-            spacing="4",
-            justify="center",
-            min_height="70vh",
-            align_items="center",
-        ),
-    )
+    return base_page(
+            body()
+        )
 
+def privacy() -> rx.Component:
+    return base_page(
+            privacy_legacy()
+        )  
 
 app = rx.App()
 app.add_page(index)
+app.add_page(privacy)
 
