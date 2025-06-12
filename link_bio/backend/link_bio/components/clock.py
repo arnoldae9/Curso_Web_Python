@@ -13,7 +13,6 @@ class TemporalState(rx.State):
 
 def clock():
     return rx.vstack(
-        rx.text("Hora del servidor: "),
         rx.heading(TemporalState.current_time),
         rx.moment(
             interval=1000,

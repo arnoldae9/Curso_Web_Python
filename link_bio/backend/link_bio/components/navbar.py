@@ -25,7 +25,7 @@ def navbar() -> rx.Component:
                     navbar_link("Home", "/#"),
                     navbar_link("About", "/#"),
                     navbar_link("Pricing", "/#"),
-                    navbar_link("Contact", "mailto:arnoldae9@gmail.com?subject=Consulta desde la pagina Web Arnoldo Del Toro."),
+                    navbar_link("Contact", "/#"),
                     justify="end",
                     spacing="5",
                 ),

@@ -1,11 +1,4 @@
 import reflex as rx
-from datetime import datetime
-
-def day_now():
-    return datetime.now().strftime('%d de %B de %Y, %H:%M:%S')
-
-def mailto() -> rx.Component:
-    return rx.link("arnoldae9@gmail.com", href="mailto:arnoldae9@gmail.com?subject=Consulta desde la pagina Web Arnoldo Del Toro.")
 
 def links_personales() -> rx.Component:
     return rx.hstack(

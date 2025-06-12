@@ -96,7 +96,7 @@ def footer() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     footer_item("Privacy Policy", "/privacy"),
-                    footer_item("Terms of Service", "/terms"),
+                    footer_item("Terms of Service", "/#"),
                     spacing="4",
                     align="center",
                     width="100%",

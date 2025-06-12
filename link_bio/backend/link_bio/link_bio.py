@@ -8,7 +8,6 @@ import link_bio.styles.styles as styles
 from link_bio.views.base_page import base_page
 from link_bio.pages.body import body
 from link_bio.pages.privacy_legacy import privacy_legacy
-from link_bio.pages.terms_of_service import terms_of_service
 
 class State(rx.State):
     """The app state."""
@@ -24,13 +23,7 @@ def privacy() -> rx.Component:
             privacy_legacy()
         )  
 
-def terms() -> rx.Component:
-    return base_page(
-        terms_of_service()
-    )
-
 app = rx.App()
 app.add_page(index)
 app.add_page(privacy)
-app.add_page(terms)
 
