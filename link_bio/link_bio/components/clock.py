@@ -15,6 +15,7 @@ def clock():
     return rx.vstack(
         rx.text("Hora del servidor: "),
         rx.heading(TemporalState.current_time),
+        rx.text("Hora y fecha Monterrey, Nuevo Léon:"),
         rx.moment(
             interval=1000,
             on_change=TemporalState.update_time.temporal,

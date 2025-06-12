@@ -17,7 +17,7 @@ def navbar() -> rx.Component:
                         border_radius="25%",
                     ),
                     rx.heading(
-                        "Arnold Del Toro", size="7", weight="bold"
+                        "Arnold Del Toro", size="7", weight="bold", 
                     ),
                     align_items="center",
                 ),
