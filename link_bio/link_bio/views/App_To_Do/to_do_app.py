@@ -1,74 +1,77 @@
 import pandas as pd
-import reflex as rx
 from pathlib import Path
-from link_bio.views.base_page import base_page
+
+# FIXME: Crear una función que cree el archivo csv si no existe...
 
 #FIXME: AGREGAR ESTAS VARIABLES Y FUNCIONES EN UNA CLASE
-"""local variables"""
-db_local_path = "link_bio/views/App_To_Do/bd_local.csv"
-estados = ["eliminada", "pendiente", "completada"]
+class TODO():
+    def __init__(self, new_db_local: pd.DataFrame = pd.DataFrame(), task: str = "",):
+        """local variables"""
+        db_local_path = "link_bio/views/App_To_Do/bd_local.csv"
+        # estados = ["eliminada", "pendiente", "completada"]
+        self.ruta_csv = db_local_path
+        self.task = task
+        self.new_db_local = new_db_local
+        self.archivo_csv = pd.read_csv(self.ruta_csv, encoding="utf-8")
 
-"""funciones"""
-def open_csv(archivo_csv:str=db_local_path, first_time:bool=True):
-    """función para abrir el archivo csv local
-    Args:
-        archivo_csv (csv): archivo csv db_local.csv
-        first_time (bool, optional): se usa para definir cuando se manda llamar por primera vez. Defaults to True.
-    Returns:
-        pd.DataFrame: regresa un data frame con las tareas almacenadas. 
-    """    
-    if not archivo_csv_existe(archivo_csv):
-        print("Creando archivo db_local.csv")
-        create_csv()
-    df = pd.read_csv(archivo_csv, encoding="utf-8")
-    print("Tareas leídas correctamente")
-    if first_time:
-        print(df)
-    return df
+    # FIXME: estas funcion tiene que ser fuera de la clase...        
+    def archivo_csv_existe(self):
+        """verifica la existencia del archivo retorna un booleano"""
+        return Path(self.ruta_csv).exists()
 
-def archivo_csv_existe(archivo_csv):
-    """verifica la existencia del archivo"""
-    return Path(archivo_csv).exists()
+    def create_csv(self):
+        """función para crear el archivo si es que no existe"""
+        data_default = {"id": [1], "tarea": ["Mirar mi Web"], "estado": ["pendiente"]}
+        df = pd.DataFrame(data_default)
+        df.to_csv(self.ruta_csv, index=False, encoding="utf-8")
+        return print("db_local.csv creado ...")
+    # FIXME: Hasta aquí ...
 
-def create_csv(nombre=db_local_path):
-    """función para crear el archivo si es que no existe"""
-    data_default = {"id": [1], "tarea": ["Mirar mi Web"], "estado": ["pendiente"]}
-    df = pd.DataFrame(data_default)
-    df.to_csv(nombre, index=False, encoding="utf-8")
-    return print("db_local.csv creado ...")
+    def new_task(self):
+        #df = open_csv(first_time=False)
+        _id = self.archivo_csv["id"].iloc[-1] + 1
+        _estado = "pendiente"
+        nuevo_registro = [_id, self.task, _estado]
+        nuevo_registro_df = pd.DataFrame(
+            [nuevo_registro], columns=["id", "tarea", "estado"]
+        )
+        self.new_db_local = pd.concat([self.archivo_csv, nuevo_registro_df], ignore_index=True)
+        self.new_db_local.to_csv(self.ruta_csv, index=False, encoding='utf-8')
+        return print(f"Nueva tarea agregada: {nuevo_registro[1]}")
 
-def new_task(task: str):
-    df = open_csv(first_time=False)
-    _id = df["id"].iloc[-1] + 1
-    _estado = "pendiente"
-    nuevo_registro = [_id, task, _estado]
-    nuevo_registro_df = pd.DataFrame(
-        [nuevo_registro], columns=["id", "tarea", "estado"]
-    )
-    df = pd.concat([df, nuevo_registro_df], ignore_index=True)
-    save_csv(df)
-    return print(f"Nueva tarea agregada: {nuevo_registro[1]}")
+    def view_pending_tasks(self):
+        """Leer las tareas pendientes desde el archivo csv, la idea es que regrese un data frame filtrado"""
+        # archivo_csv=open_csv(first_time=False)
+        return print(self.archivo_csv[self.archivo_csv["estado"]=="pendiente"].to_string(index=False))
+        
 
-def view_pending_tasks():
-    """Leer las tareas pendientes desde el archivo csv, la idea es que regrese un data frame filtrado"""
-    archivo_csv=open_csv(first_time=False)
-    return archivo_csv[archivo_csv["estado"]=="pendiente"]
-    
+    def view_completed_tasks(self):
+        """Leer las tareas completadas desde el archivo csv, el objetivo es mostrar las completadas"""
+        return print(self.archivo_csv[self.archivo_csv["estado"]=="completada"].to_string(index=False))
 
-def view_completed_tasks():
-    """Leer las tareas completadas desde el archivo csv, el objetivo es mostrar las completadas"""
-    archivo_csv=open_csv(first_time=False)
-    return archivo_csv[archivo_csv["estado"]=="completada"]
-
-def save_csv(new_db_local, archivo_csv=db_local_path):
-    new_db_local.to_csv(archivo_csv, index=False, encoding='utf-8')
-
-def complete_task(task):
-    df = open_csv(first_time=False)
-    df.loc[df['tarea'] == task, 'estado'] = 'completada'
-    save_csv(df)
-    
+    def complete_task(self):
+        self.archivo_csv.loc[self.archivo_csv['tarea'] == self.task, 'estado'] = 'completada'
+        self.archivo_csv.to_csv(self.ruta_csv, encoding="utf-8")
+        
 # if __name__ == "__main__":
+    # pasos para nueva tarea 
+    # tarea_nueva = input("Ingresa la tarea nueva: ")
+    # todo = TODO(task=tarea_nueva)
+    # todo.new_task()
+    #---------------------------#
+    # pasos para los views
+    # todo = TODO()
+    # todo.view_completed_tasks()
+    # todo.view_pending_tasks()
+    #---------------------------#
+    # pasos para completar tareas
+    # tarea_a_eliminar = input("Ingrese la tarea a completar: ")
+    # todo = TODO(task=tarea_a_eliminar)
+    # todo.complete_task()
+    #---------------------------#
+
+
+
     # open_csv()
     # TODO: cuando se cree el botón check in en la app no habrá un input, la idea es que tome el str del mismo botón.
     # task_new = input("Ingresa la nueva tarea: ")
