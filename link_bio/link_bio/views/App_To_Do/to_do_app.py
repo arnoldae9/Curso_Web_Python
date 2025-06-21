@@ -1,5 +1,7 @@
 import pandas as pd
+import reflex as rx
 from pathlib import Path
+from link_bio.views.base_page import base_page
 
 #FIXME: AGREGAR ESTAS VARIABLES Y FUNCIONES EN UNA CLASE
 """local variables"""
@@ -66,12 +68,13 @@ def complete_task(task):
     df.loc[df['tarea'] == task, 'estado'] = 'completada'
     save_csv(df)
     
-if __name__ == "__main__":
-    open_csv()
+# if __name__ == "__main__":
+    # open_csv()
     # TODO: cuando se cree el botón check in en la app no habrá un input, la idea es que tome el str del mismo botón.
     # task_new = input("Ingresa la nueva tarea: ")
     # new_task(task_new)
     # tarea_completada = str(input(f"introduzca la tarea a eliminar: "))
     # complete_task(tarea_completada)
     # view_pending_tasks()
-    view_completed_tasks()
+    # view_completed_tasks()
+

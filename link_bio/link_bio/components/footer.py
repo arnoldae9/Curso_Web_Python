@@ -26,7 +26,7 @@ def footer_items_2() -> rx.Component:
         rx.heading(
             "RESOURCES", size="4", weight="bold", as_="h3"
         ),
-        footer_item("Blog", "/#"),
+        footer_item("To Do App", "/todo"),
         footer_item("Case Studies", "/#"),
         footer_item("Whitepapers", "/#"),
         footer_item("Webinars", "/#"),
