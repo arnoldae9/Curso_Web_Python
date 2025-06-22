@@ -49,11 +49,15 @@ class TODO():
         """Leer las tareas completadas desde el archivo csv, el objetivo es mostrar las completadas"""
         return print(self.archivo_csv[self.archivo_csv["estado"]=="completada"].to_string(index=False))
 
-    def complete_task(self):
+    def task_to_complete(self):
         self.archivo_csv.loc[self.archivo_csv['tarea'] == self.task, 'estado'] = 'completada'
         self.archivo_csv.to_csv(self.ruta_csv, encoding="utf-8")
+
+    def task_to_pending(self):
+        self.archivo_csv.loc[self.archivo_csv['tarea'] == self.task, 'estado'] = 'pendiente'
+        self.archivo_csv.to_csv(self.ruta_csv, encoding="utf-8")
         
-# if __name__ == "__main__":
+if __name__ == "__main__":
     # pasos para nueva tarea 
     # tarea_nueva = input("Ingresa la tarea nueva: ")
     # todo = TODO(task=tarea_nueva)
@@ -69,7 +73,11 @@ class TODO():
     # todo = TODO(task=tarea_a_eliminar)
     # todo.complete_task()
     #---------------------------#
-
+    # pasos para tareas pendientes
+    tarea_pendiente = input("Ingrese la tarea pendiente: ")
+    todo = TODO(task=tarea_pendiente)
+    todo.task_to_pending()
+    #---
 
 
     # open_csv()
