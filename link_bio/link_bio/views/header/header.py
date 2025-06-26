@@ -1,6 +1,6 @@
 import reflex as rx
 
-def header() -> rx.Component:
+def header():
     return rx.hstack(  # Usamos hstack para alinear horizontalmente
         rx.image(
             src="/file.jpg",

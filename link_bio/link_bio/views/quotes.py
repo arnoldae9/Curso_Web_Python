@@ -79,9 +79,11 @@ def quote_component() -> rx.Component:
         padding="1em",
     )
 
-def quote() -> rx.Component:
-    return  rx.center(
+def quote():
+    return  rx.vstack(
+                rx.text("Consulta de cita por api y traducción por Mymemory", size= "7", align="center"),
                 quote_component(),
                 width="100%",
                 padding="2em 0",
+                align_items="center",
             ),

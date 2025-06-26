@@ -1,0 +1,54 @@
+# Página Web
+- [x] Nombre
+- [x] Habilidad principal
+- [x] E-mail visible
+- [x] botón para copiar el e-mail
+- [x] CV para descargar
+- [x] CV para visualizar
+- [ ] Proyectos principales
+  - [ ] descripción
+  - [ ] tecnologías
+  - [ ] imagen
+  - [ ] código
+- [ ] Habilidades técnicas
+  - [ ] categorías
+- [ ] Experiencia laboral
+  - [ ] en cualquier cosa
+- [ ] Sobre mí
+# Recomendable
+- [ ] Git Hub/LinkedIn
+- [ ] Foto
+- [ ] Otros proyectos
+  - [ ] Otra página
+- [ ] Dominio personalizado
+- [ ] Roles desempeñados
+# Desaconsejable
+- [ ] Redes sociales (que no aporten nada)
+- [ ] Proyectos que no reflejen nuestro conocimiento
+- [ ] Exceso de texto
+- [ ] Exceso de conocimiento
+- [ ] Redundancia
+- [ ] Información irrevelante
+# Web
+- [ ] Coherencia
+- [ ] UX/UI
+- [ ] Paleta de colores
+- [ ] Uniformidad
+- [ ] Responsive
+- [ ] Imágenes proporcionales
+- [ ] Realismo (**NO MIENTAS**)
+- [ ] Navegación continua (El usuario siempre tiene que tener algo que hacer)
+- [ ] Encontrar el tono de comunicación
+- [ ] SEO
+- [ ] Actualización Web
+# Opcional
+- [ ] Dark/light
+- [ ] Web en otro idioma (*depende del objetivo*)
+- [ ] Apartado: ***Estoy aprendiendo***
+- [ ] Aficiones
+- [ ] Blog/artículos
+- [ ] Divulgación
+- [ ] Contribuciones
+- [ ] Participación de eventos
+- [ ] Certificaciones
+- [ ] Habilidades de idiomas

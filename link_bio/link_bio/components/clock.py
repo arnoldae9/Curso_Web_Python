@@ -24,4 +24,9 @@ def clock():
     )
 
 def card_clock() -> rx.Component:
-    return rx.card(clock(), size="1") # size 1 2 3 4 5
+    return rx.vstack(
+        rx.text("Consulta de hora por api", size="7"),
+        rx.card(clock(), size="1"), # size 1 2 3 4 5
+        align_items="center",
+        padding="2em 0",
+    ) 
