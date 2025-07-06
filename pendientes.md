@@ -6,7 +6,7 @@
 - [x] CV para descargar
 - [x] CV para visualizar
 - [ ] Proyectos principales
-  - [ ] descripción
+  - [x] descripción
   - [ ] tecnologías
   - [ ] imagen
   - [ ] código

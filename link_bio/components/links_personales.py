@@ -12,10 +12,19 @@ def links_personales() :
         rx.link(
             rx.hstack(
             rx.icon(tag="github", color="gray"),
-            rx.button("Link a mi Github !! 😊", color_scheme="gray", _hover={"color": "blue"}),
+            rx.button("Link a mis repositorios !! 😊", color_scheme="gray", _hover={"color": "blue"}),
             spacing="2"
             ),
             href="https://github.com/arnoldae9",
+            is_external=True,
+        ),
+        rx.link(
+            rx.hstack(
+                rx.icon(tag="github", color="gray"),
+                rx.button("Presentación Git Hub!!! 📖", color_scheme="red", _hover={"color":"blue"}),
+                spacing="2"
+            ),
+            href="https://github.com/arnoldae9/arnoldae9",
             is_external=True,
         ),
         rx.link(
