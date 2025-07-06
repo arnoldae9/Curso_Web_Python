@@ -1,2 +1,8 @@
 # Curso_Web_Python
- repositorio del curso web de python usando reflex
+Repositorio del curso web de python usando reflex.
+
+Utiliza reflex run para correr el programa de forma local.
+
+Con reflex deploy lo desplegamos en cloud.
+
+En el archivo pendientes tengo los cambios recomendados por videos ...
